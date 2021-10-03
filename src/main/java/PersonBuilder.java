@@ -4,7 +4,7 @@ public class PersonBuilder {
 
     public PersonBuilder() {
         newPerson = new Person();
-    }
+   }
 
     public PersonBuilder setName(String name) {
         newPerson.name = name;

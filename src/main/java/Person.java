@@ -7,19 +7,13 @@ public class Person {
     protected int age;
     protected String address;
 
-
-    public Person() {
-        this.name = name;
-        this.surname = surname;
-    }
-
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
     }
 
-    public Person(String name, String surname, String address) {
+    public Person() {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -49,7 +43,7 @@ public class Person {
     }
 
     public boolean hasAge() {
-        return getAge() != 0;
+        return getAge() >= 0;
     }
 
     public boolean hasAddress() {

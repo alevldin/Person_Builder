@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.OptionalInt;
 
 public class Person {
 
@@ -13,17 +14,23 @@ public class Person {
         this.age = age;
     }
 
-    public Person() {
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-    }
-
     public Person(String name, String surname, int age, String address) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.address = address;
+    }
+
+    public Person() {
+
+    }
+
+    public boolean hasAge() {
+        return age >= 0;
+    }
+
+    public boolean hasAddress() {
+        return address != null;
     }
 
     public String getName() {
@@ -34,20 +41,24 @@ public class Person {
         return surname;
     }
 
-    public int getAge() {
-        return age;
+    public OptionalInt getAge() {
+        return OptionalInt.of(age);
     }
 
     public String getAddress() {
         return address;
     }
 
-    public boolean hasAge() {
-        return getAge() >= 0;
+    public void setAddress(String address) {
+        if (address != null) {
+            this.address = address;
+        }
     }
 
-    public boolean hasAddress() {
-        return getAddress() != null;
+    public void happyBirthday() {
+        if (hasAge()) {
+            age++;
+        }
     }
 
     @Override
@@ -71,19 +82,6 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, age, address);
-    }
-
-    public void happyBirthday() {
-        if (hasAge()) {
-            this.age = age++;
-        }
-    }
-
-    public String setAddress(String address) {
-        if (!hasAddress()) {
-            return this.address = address;
-        }
-        return this.address;
     }
 
     public PersonBuilder newChildBuilder() {

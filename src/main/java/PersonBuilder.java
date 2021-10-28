@@ -1,4 +1,3 @@
-
 public class PersonBuilder {
     private Person newPerson;
 

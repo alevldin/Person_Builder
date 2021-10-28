@@ -8,25 +8,19 @@ public class Person {
     protected int age;
     protected String address;
 
-    public Person(String name, String surname, int age) {
+    public Person() {
         this.name = name;
         this.surname = surname;
-        this.age = age;
     }
 
     public Person(String name, String surname, int age, String address) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.address = address;
-    }
-
-    public Person() {
-
     }
 
     public boolean hasAge() {
-        return age >= 0;
+        return age <= 0;
     }
 
     public boolean hasAddress() {
@@ -44,7 +38,6 @@ public class Person {
     public OptionalInt getAge() {
         return OptionalInt.of(age);
     }
-
     public String getAddress() {
         return address;
     }

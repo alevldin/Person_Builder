@@ -1,66 +1,49 @@
 import java.util.Objects;
 import java.util.OptionalInt;
 
-public class Person {
-
-    protected String name;
-    protected String surname;
+public class Person   {
+    protected final String name;
+    protected final String surname;
     protected int age;
     protected String address;
 
-    public Person() {
+    public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
-    public Person(String name, String surname, int age, String address) {
+    public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
     }
 
     public boolean hasAge() {
-        return age <= 0;
-    }
-
+        return !(age<1);}
     public boolean hasAddress() {
-        return address != null;
-    }
-
+        return address!=null;}
     public String getName() {
-        return name;
-    }
-
+        return name;}
     public String getSurname() {
-        return surname;
-    }
-
+        return surname; }
     public OptionalInt getAge() {
         return OptionalInt.of(age);
     }
     public String getAddress() {
-        return address;
-    }
+        return address; }
 
-    public void setAddress(String address) {
-        if (address != null) {
-            this.address = address;
-        }
-    }
-
+    public String setAddress(String address) { return this.address=address;}
     public void happyBirthday() {
-        if (hasAge()) {
-            age++;
+        if (hasAge()){
+            this.age++;
         }
     }
-
     @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
-                ", address='" + address + '\'' +
                 '}';
     }
 
@@ -69,15 +52,17 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return age == person.age && name.equals(person.name) && surname.equals(person.surname) && address.equals(person.address);
+        return age == person.age && Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age, address);
+        return Objects.hash(name, surname, age);
     }
 
     public PersonBuilder newChildBuilder() {
-        return new PersonBuilder().setSurname(getSurname()).setAddress(getAddress());
+
+        PersonBuilder personBuilder=new PersonBuilder().setSurname(surname).setAddress(address);
+        return  personBuilder;
     }
 }

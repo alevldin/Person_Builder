@@ -1,7 +1,7 @@
 import java.util.Objects;
 import java.util.OptionalInt;
 
-public class Person   {
+public class Person {
     protected final String name;
     protected final String surname;
     protected int age;
@@ -19,25 +19,39 @@ public class Person   {
     }
 
     public boolean hasAge() {
-        return age >= 0;}
+        return age >= 0;
+    }
+
     public boolean hasAddress() {
-        return address!=null;}
+        return address != null;
+    }
+
     public String getName() {
-        return name;}
+        return name;
+    }
+
     public String getSurname() {
-        return surname; }
+        return surname;
+    }
+
     public OptionalInt getAge() {
         return OptionalInt.of(age);
     }
-    public String getAddress() {
-        return address; }
 
-    public String setAddress(String address) { return this.address=address;}
+    public String getAddress() {
+        return address;
+    }
+
+    public String setAddress(String address) {
+        return this.address = address;
+    }
+
     public void happyBirthday() {
-        if (hasAge()){
+        if (hasAge()) {
             this.age++;
         }
     }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -62,7 +76,7 @@ public class Person   {
 
     public PersonBuilder newChildBuilder() {
 
-        PersonBuilder personBuilder=new PersonBuilder().setSurname(surname).setAddress(address);
-        return  personBuilder;
+        PersonBuilder personBuilder = new PersonBuilder().setSurname(surname).setAddress(address);
+        return personBuilder;
     }
 }

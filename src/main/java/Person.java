@@ -48,7 +48,7 @@ public class Person {
 
     public void happyBirthday() {
         if (hasAge()) {
-            this.age++;
+            age++;
         }
     }
 
@@ -58,6 +58,7 @@ public class Person {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
+                ", address=" + address +
                 '}';
     }
 
@@ -66,17 +67,19 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return age == person.age && Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
+        return age == person.age && name.equals(person.name) && surname.equals(person.surname) && Objects.equals(address, person.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age);
+        return Objects.hash(name, surname);
     }
 
     public PersonBuilder newChildBuilder() {
 
-        PersonBuilder personBuilder = new PersonBuilder().setSurname(surname).setAddress(address);
+        PersonBuilder personBuilder = new PersonBuilder()
+                .setSurname(surname)
+                .setAddress(address);
         return personBuilder;
     }
 }

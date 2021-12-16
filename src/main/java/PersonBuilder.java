@@ -1,7 +1,7 @@
 public class PersonBuilder {
     String name;
     String surname;
-    int age = -1;
+    int age =-1 ;
     String address;
 
     public PersonBuilder setName(String name) {
@@ -15,9 +15,10 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setAge(int age) throws IllegalArgumentException {
-
-        if (age < 0) throw new IllegalArgumentException("The age is specified incorrectly");
-        this.age = age;
+        if (age < 0 ) {
+            throw new IllegalArgumentException("The age is specified incorrectly");
+        } else
+            this.age = age;
         return this;
     }
 
@@ -34,12 +35,10 @@ public class PersonBuilder {
         if (age < 0) {
             person = new Person(name, surname);
         } else {
-            person = new Person(name, surname, age);
+           person = new Person(name, surname,age);
         }
         person.setAddress(address);
         return person;
 
     }
-
 }
-
